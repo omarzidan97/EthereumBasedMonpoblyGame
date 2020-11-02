@@ -1,4 +1,4 @@
-# MonobolyGameWithEthereum
+# MonopolyGameWithEthereum
 Ethereum based Monopoly game
 
 Graduation Project 2019: Ethereum based Monopoly Game
