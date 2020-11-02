@@ -1,0 +1,64 @@
+Blockchain Monopoly
+Monopoly Guidelines
+
+    8 players (Battleship, Boot, Scottie, Iron, Racecar, Hat, Thimble, Wheelbarrow)
+    Total money in circulation: $15140
+    Each player receives $1500 before round one
+    Bank owns all the property at the start, players buy property from the bank
+    Bank owns all the money at the start of the game
+    The bank pays each player $200 everytime they pass Start
+    Fines gets paid in a Fines Pool and is not owned by anybody
+    Claiming the money in the Fines Pool needs another player / all the player's consensus
+    Players pay 'Rent' to each other when landing on an owned property
+
+To simplify the game, the token owner controls the bank. This can be a player or an external party. A more better solution would be to remove the bank owner with claims against the bank which gets approved by the other players.
+Application "design"
+The Contracts
+
+The application will be split up into multiple contracts, it is neccesary for this use case, but it is fun.
+
+contract Owned {
+  /*
+    This contract will be used to assign an owner to other cotracts
+    and make the execution of certain functions privileged
+  */
+}
+
+contract Bank {
+  /*
+    This will function much the same as the Owned contract, but can have a different
+    controlling address assigned to it. It will also have a 'bank balance' 
+  */
+}
+
+contract MonopolyGame {
+  /*
+    This a contract that creates contracts. When ever someone other than the contract 
+    owner wants to play monopoly, they can run this contract and they will get their own "instance"
+    of monopoly. This can be compared to buying a copy of a game.
+  */
+}
+
+contract MonopolyBank is Owned, Bank {
+  /*
+    The actual monopoly game bank.
+    MonopolyBank will be derived from Bank and Owned and will have access to their funtions
+  */
+}
+
+Modifiers
+
+A modifier are a special type of function that can be called before the function is executed and modify the behaviour of the function, we will build 3 modifiers:
+
+    onlyOwner
+    onlyBankManager
+    onlyPlayers
+
+Modifiers
+
+Game owner functions
+
+    NewGame()
+    SetPlayer(string, address)
+    BankPayPlayer(string, int)
+    RefundBank()
